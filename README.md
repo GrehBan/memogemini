@@ -76,11 +76,10 @@ cp .env.example .env
 
 ### Deployment
 
-To link extension to gemini-cli:
+To install extension for gemini-cli:
 
 ```bash
-cd memogemini
-gemini extensions link .
+gemini extensions install https://github.com/GrehBan/memogemini.git
 ```
 ## 🔌 MCP Tools
 
