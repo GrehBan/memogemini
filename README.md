@@ -25,7 +25,7 @@ memogemini-mcp-server/
 ├── package.json            # Dependencies and scripts
 ├── Dockerfile              # Container definition
 ├── docker-compose.yml      # Orchestration for app, Redis, and Qdrant
-└── PROMPT.md               # System prompt for the AI agent
+└── GEMINI.md               # System prompt for the AI agent
 ```
 
 ## 🛠️ Technologies
