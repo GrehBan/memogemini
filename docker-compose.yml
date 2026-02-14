@@ -1,0 +1,37 @@
+services:
+  memogemini:
+    build: .
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - QDRANT_URL=http://qdrant:6333
+      - QDRANT_COLLECTION=memories
+      - NOTES_DIR=/app/agent_notes
+      - EMBED_MODEL=sentence-transformers/all-MiniLM-L6-v2
+    volumes:
+      - ./agent_notes:/app/agent_notes
+    depends_on:
+      - redis
+      - qdrant
+    stdin_open: true # Important for MCP stdio interaction if attached
+    tty: true
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: always
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  redis_data:
+  qdrant_storage:
